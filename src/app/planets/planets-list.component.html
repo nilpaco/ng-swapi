@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let planet of planets" [routerLink]="[planet.url]">{{ planet.name }}</li>
+</ul>
+<button (click)="back()"
+  *ngIf="_back">
+Back
+</button>
+<button (click)="next()"
+  *ngIf="_next">
+Next
+</button>

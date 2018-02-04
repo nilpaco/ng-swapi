@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let person of people" [routerLink]="[person.url]">{{ person.name }}</li>
+</ul>
+<button (click)="back()"
+  *ngIf="_back">
+  Back
+</button>
+<button (click)="next()"
+  *ngIf="_next">
+  Next
+</button>

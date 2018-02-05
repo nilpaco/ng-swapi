@@ -1,28 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Person } from '../models/person';
 
 @Injectable()
-export class SwapiService {
+export class JsonserverService {
 
   private url: string = 'http://178.62.25.113/people';
+  private httpOptions;
 
   constructor(
     private http: HttpClient
-  ) { }
-
-  // TODO: check get service
-  get(url: string): Observable<any> {
-    return this.http.get<any>(url);
+  ) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'my-auth-token'
+      })
+    };
+  }
+  
+  getPeople(personId?: number): Observable<any> {
+    const url = personId ? `${this.url}/${personId}` : this.url;
+    return this.http.get<Person[] | Person>(url);
   }
 
-
-  getPeople(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+  save(person: Person): Observable<any> {
+    return this.http.post<any>(this.url, person, this.httpOptions);
   }
 
-  getPerson(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/people/${id}/`);
+  update(person: Person): Observable<any> {
+    const url = `${this.url}/${person.id}`;
+    return this.http.put<any>(url, person, this.httpOptions);
   }
 
 }

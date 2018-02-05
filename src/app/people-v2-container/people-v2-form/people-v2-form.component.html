@@ -1,3 +1,53 @@
-<p>
-  people-v2-form works!
-</p>
+<form #form="ngForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input required type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="person.name">
+    </div>
+    <div class="form-group">
+      <label>Height</label>
+      <input required type="text" class="form-control" name="height" placeholder="Height" [(ngModel)]="person.height">
+    </div>
+    <div class="form-group">
+      <label>Mass</label>
+      <input required type="text" class="form-control" name="mass" placeholder="Mass" [(ngModel)]="person.mass">
+    </div>
+    <div class="form-group">
+      <label>Hair color</label>
+      <select class="form-control" name="hair_color" [(ngModel)]="person.hair_color">
+        <option *ngFor="let hair of hairEnum">{{ hair }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Skin color</label>
+      <input required type="text" class="form-control" name="skin_color" placeholder="Skin color" [(ngModel)]="person.skin_color">
+    </div>
+    <div class="form-group">
+      <label>Eye color</label>
+      <select required class="form-control" name="eye_color" [(ngModel)]="person.eye_color">
+        <option *ngFor="let eye of eyeEnum">{{ eye }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Birth year</label>
+      <input required type="number" class="form-control" name="birth_year" placeholder="Birth year" [(ngModel)]="person.birth_year">
+    </div>
+    <div class="form-check">
+      <input required class="form-check-input" type="radio" name="male" value="male" [(ngModel)]="person.gender">
+      <label class="form-check-label">
+        Male
+      </label>
+    </div>
+    <div class="form-check">
+      <input required class="form-check-input" type="radio" name="famale" value="famale" [(ngModel)]="person.gender">
+      <label class="form-check-label">
+        Famale
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Eye color</label>
+      <select required class="form-control" name="eye_color" [(ngModel)]="person.eye_color">
+        <option *ngFor="let eye of eyeEnum">{{ eye }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="save()">Submit</button>
+</form>

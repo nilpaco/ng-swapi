@@ -11,10 +11,6 @@ export class SwapiService {
     private http: HttpClient
   ) { }
 
-  get(url: string): Observable<any> {
-    return this.http.get<any>(url);
-  }
-
   getPlanets(url?: string): Observable<any[]> {
     return this.http.get<any[]>(url ? url : `${this.url}/planets/?page=1`);
   }
@@ -29,11 +25,6 @@ export class SwapiService {
 
   getPerson(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/people/${id}/`);
-  }
-
-  getUser(login: string): Observable<any> {
-    const url = `${this.url}/users/${login}`
-    return this.http.get<any>(url);
   }
 
 }

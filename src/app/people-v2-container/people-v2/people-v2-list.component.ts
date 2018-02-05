@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonserverService } from '../../services/jsonserver.service';
 
 @Component({
   selector: 'app-people-v2-list',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PeopleV2ListComponent implements OnInit {
 
-  constructor() { }
+  public people;
+
+  constructor(
+    private jsonserverService: JsonserverService
+  ) { }
 
   ngOnInit() {
+    this.getPeople();
+  }
+
+  getPeople() {
+    this.jsonserverService.getPeople().take(1).subscribe(res => {
+      this.people = res;
+    })
   }
 
 }

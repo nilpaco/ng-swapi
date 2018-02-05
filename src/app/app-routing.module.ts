@@ -17,8 +17,7 @@ const routes: Routes = [
   { path: 'people-v2', component: PeopleV2ContainerComponent, 
     children: [
       { path: '', component: PeopleV2ListComponent },
-      { path: ':person', component: PeopleV2ListComponent },
-      { path: ':person/edit', component: PeopleV2FormComponent },
+      { path: ':person', component: PeopleV2FormComponent },
       { path: 'new', component: PeopleV2FormComponent }
     ]}
 ];

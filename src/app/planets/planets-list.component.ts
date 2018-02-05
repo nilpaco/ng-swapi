@@ -4,7 +4,7 @@ import { SwapiService } from '../services/swapi.service';
 @Component({
   selector: 'app-planets-list',
   templateUrl: './planets-list.component.html',
-  styleUrls: ['./planets-list.component.sass']
+  styleUrls: ['./planets-list.component.scss']
 })
 export class PlanetsListComponent implements OnInit {
 

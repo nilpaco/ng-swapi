@@ -5,7 +5,7 @@ import { SwapiService } from '../../services/swapi.service';
 @Component({
   selector: 'app-person-detail',
   templateUrl: './person-detail.component.html',
-  styleUrls: ['./person-detail.component.sass']
+  styleUrls: ['./person-detail.component.scss']
 })
 export class PersonDetailComponent implements OnInit {
 

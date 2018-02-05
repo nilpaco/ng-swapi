@@ -10,6 +10,9 @@ import { PlanetsListComponent } from './planets/planets-list.component';
 import { SwapiService } from './services/swapi.service';
 import { PlanetsDetailComponent } from './planets/planets-detail/planets-detail.component';
 import { PersonDetailComponent } from './people/person-detail/person-detail.component';
+import { PeopleV2ContainerComponent } from './people-v2-container/people-v2-container.component';
+import { PeopleV2ListComponent } from './people-v2-container/people-v2/people-v2-list.component';
+import { PeopleV2FormComponent } from './people-v2-container/people-v2-form/people-v2-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { PersonDetailComponent } from './people/person-detail/person-detail.comp
     PeopleListComponent,
     PlanetsListComponent,
     PlanetsDetailComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    PeopleV2ContainerComponent,
+    PeopleV2ListComponent,
+    PeopleV2FormComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,5 @@ export class Person {
     public gender: string;
     public homeworld: Planet; 
 
-    constructor(
-        name?: string
-    ) { }
+    constructor() { }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Person } from '../models/person';
 
 @Injectable()
@@ -11,27 +11,20 @@ export class JsonserverService {
 
   constructor(
     private http: HttpClient
-  ) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
-    };
-  }
+  ) { }
   
   getPeople(personId?: number): Observable<any> {
     const url = personId ? `${this.url}/${personId}` : this.url;
     return this.http.get<Person[] | Person>(url);
   }
 
-  save(person: Person): Observable<any> {
-    return this.http.post<any>(this.url, person, this.httpOptions);
+  save(person: Person): Observable<Person> {
+    return this.http.post<Person>(this.url, person);
   }
 
-  update(person: Person): Observable<any> {
+  update(person: Person): Observable<Person> {
     const url = `${this.url}/${person.id}`;
-    return this.http.put<any>(url, person, this.httpOptions);
+    return this.http.put<Person>(url, person);
   }
 
 }

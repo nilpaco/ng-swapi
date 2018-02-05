@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  toggled: boolean = false;
+  
+  toggleNavbar() {
+    this.toggled = !this.toggled;
+  }
 }

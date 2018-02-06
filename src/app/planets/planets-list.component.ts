@@ -1,28 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../services/swapi.service';
 import { Planet } from '../models/planet';
+import { AbstractListComponent } from '../models/abstract-list.component';
 
 @Component({
   selector: 'app-planets-list',
   templateUrl: './planets-list.component.html',
   styleUrls: ['./planets-list.component.scss']
 })
-export class PlanetsListComponent implements OnInit {
+export class PlanetsListComponent extends AbstractListComponent {
 
   public planets: Planet[];
-  public _next: string;
-  public _back: string;
-  public loading: boolean;
-
+  
   constructor(
-    private swapiService: SwapiService
-  ) { }
-
-  ngOnInit() {
-    this.getPlanets();
+    public swapiService: SwapiService
+  ) { 
+    super(swapiService)
   }
 
-  getPlanets(url?: string) {
+  getList(url?: string) {
     this.loading = true;
     this.planets = undefined;
     this.swapiService.getPlanets(url).subscribe((res: Planet[]) => {
@@ -37,11 +33,11 @@ export class PlanetsListComponent implements OnInit {
   }
 
   next() {
-    this.getPlanets(this._next);
+    this.getList(this._next);
   }
 
   back() {
-    this.getPlanets(this._back);
+    this.getList(this._back);
   }
 
 }

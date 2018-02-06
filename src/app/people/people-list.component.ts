@@ -1,28 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../services/swapi.service';
 import { Person } from '../models/person';
+import { AbstractListComponent } from '../models/abstract-list.component';
 
 @Component({
   selector: 'app-people-list',
   templateUrl: './people-list.component.html',
   styleUrls: ['./people-list.component.scss']
 })
-export class PeopleListComponent implements OnInit {
+export class PeopleListComponent extends AbstractListComponent {
 
   public people: Person[];
-  public _next: string;
-  public _back: string;
-  public loading: boolean;
 
   constructor(
-    private swapiService: SwapiService
-  ) { }
-
-  ngOnInit() {
-    this.getPeople();
+    protected swapiService: SwapiService
+  ) {
+    super(swapiService);
   }
 
-  getPeople(url?: string) {
+  getList(url?: string) {
     this.loading = true;
     this.people = undefined;
     this.swapiService.getPeople(url).subscribe((res: Person[]) => {
@@ -37,11 +33,11 @@ export class PeopleListComponent implements OnInit {
   }
 
   next() {
-    this.getPeople(this._next);
+    this.getList(this._next);
   }
 
   back() {
-    this.getPeople(this._back);
+    this.getList(this._back);
   }
 
 }

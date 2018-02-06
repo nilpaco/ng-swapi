@@ -1,22 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <a class="navbar-brand">NgSwapi</a>
-  <button (click)="toggleNavbar()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.block]="toggled">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" (click)="toggled = false" [routerLink]="['people']" routerLinkActive="active">People</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" (click)="toggled = false" [routerLink]="['planets']" routerLinkActive="active">Planets</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="toggled = false" [routerLink]="['people-v2']" routerLinkActive="active">People v2</a>
-      </li>  
-    </ul>
-  </div>
-</nav>
+<app-navbar></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

@@ -15,6 +15,7 @@ import { PeopleV2ListComponent } from './people-v2-container/people-v2/people-v2
 import { PeopleV2FormComponent } from './people-v2-container/people-v2-form/people-v2-form.component';
 import { JsonserverService } from './services/jsonserver.service';
 import { AbstractListComponent } from './models/abstract-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AbstractListComponent } from './models/abstract-list.component';
     PersonDetailComponent,
     PeopleV2ContainerComponent,
     PeopleV2ListComponent,
-    PeopleV2FormComponent    
+    PeopleV2FormComponent,
+    NavbarComponent    
   ],
   imports: [
     BrowserModule,

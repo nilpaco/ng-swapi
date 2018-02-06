@@ -1,4 +1,28 @@
-<button class="btn btn-primary" type="button" [routerLink]="['new']">New person</button>
-<ul>
-  <li *ngFor="let person of people" [routerLink]="[person.id]">{{ person.name }}</li>
-</ul>
+<div class="row mx-auto">
+  <button class="btn btn-primary mt-2" type="button" [routerLink]="['new']">New person</button>
+</div>
+<div class="row">
+  <div class="col-md-6" *ngFor="let person of people">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ person.name }}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Height: {{ person.height }}</li>
+            <li class="list-group-item">Gender: {{ person.gender }}</li>
+            <li class="list-group-item">Birthyear: {{ person.birth_year }}</li>
+          </ul>
+          <div class="card-body">
+            <a [routerLink]="[person.id]" class="card-link">View</a>
+            <a (click)="delete(person.id)" class="btn btn-outline-danger ml-2">Delete</a>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="col-12" *ngIf="loading">
+  <div class="card">
+    <div class="card-body">
+      Loading...
+    </div>
+  </div>
+</div>

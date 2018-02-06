@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Person } from '../models/person';
+import { Planet } from '../models/planet';
 
 @Injectable()
 export class SwapiService {
@@ -11,20 +13,20 @@ export class SwapiService {
     private http: HttpClient
   ) { }
 
-  getPlanets(url?: string): Observable<any[]> {
-    return this.http.get<any[]>(url ? url : `${this.url}/planets/?page=1`);
+  getPlanets(url?: string): Observable<Planet[]> {
+    return this.http.get<Planet[]>(url ? url : `${this.url}/planets/?page=1`);
   }
 
-  getPlanet(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/planets/${id}/`);
+  getPlanet(id: number): Observable<Planet> {
+    return this.http.get<Planet>(`${this.url}/planets/${id}/`);
   }
 
-  getPeople(url?: string): Observable<any[]> {
-    return this.http.get<any[]>(url ? url : `${this.url}/people/?page=1`);
+  getPeople(url?: string): Observable<Person[]> {
+    return this.http.get<Person[]>(url ? url : `${this.url}/people/?page=1`);
   }
 
-  getPerson(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/people/${id}/`);
+  getPerson(id: number): Observable<Person> {
+    return this.http.get<Person>(`${this.url}/people/${id}/`);
   }
 
 }

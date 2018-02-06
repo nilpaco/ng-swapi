@@ -15,6 +15,13 @@
         </div>
       </div>
 </div>
+<div class="col-12" *ngIf="loading">
+  <div class="card">
+    <div class="card-body">
+      Loading...
+    </div>
+  </div>
+</div>
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item" [class.disabled]="!_back ? true : null"><a class="page-link" (click)="back()">Previous</a></li>

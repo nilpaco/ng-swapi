@@ -1,3 +1,7 @@
-{{ 
-  planet | json
-}}
+<div class="jumbotron" *ngIf="planet">
+  <h1 class="display-4">{{ planet?.name }}</h1>
+  <p class="lead">{{ planet?.rotation_period }} rp &nbsp;&nbsp; | &nbsp;&nbsp; {{ planet?.orbital_period }} op &nbsp;&nbsp; | &nbsp;&nbsp; {{ planet?.diameter }} km</p>
+  <hr class="my-4">
+  <p class="text-capitalize">Population: {{ planet?.population }}</p>
+  <p class="text-capitalize">Terrain: {{ planet?.terrain }}</p>
+</div>

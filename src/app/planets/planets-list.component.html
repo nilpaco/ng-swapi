@@ -1,11 +1,30 @@
-<ul>
-  <li *ngFor="let planet of planets" [routerLink]="[planet.url]">{{ planet.name }}</li>
-</ul>
-<button (click)="back()"
-  *ngIf="_back">
-Back
-</button>
-<button (click)="next()"
-  *ngIf="_next">
-Next
-</button>
+<div class="row">
+  <div class="col-md-6" *ngFor="let planet of planets">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ planet.name }}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rotation period: {{ planet.rotation_period }}</li>
+            <li class="list-group-item">Orbital period: {{ planet.orbital_period }}</li>
+            <li class="list-group-item">Population: {{ planet.population }}</li>
+          </ul>
+          <div class="card-body">
+            <a [routerLink]="[planet.url]" class="card-link">View</a>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="col-12" *ngIf="loading">
+  <div class="card">
+    <div class="card-body">
+      Loading...
+    </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="!_back ? true : null"><a class="page-link" (click)="back()">Previous</a></li>
+    <li class="page-item" [class.disabled]="!_next ? true : null"><a class="page-link" (click)="next()">Next</a></li>
+  </ul>
+</nav>

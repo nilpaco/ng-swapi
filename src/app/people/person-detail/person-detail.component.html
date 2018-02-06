@@ -1,3 +1,7 @@
-{{ 
-  person | json
-}}
+<div class="jumbotron" *ngIf="person">
+  <h1 class="display-4">{{ person?.name }}</h1>
+  <p class="lead" class="text-capitalize">{{ person?.height }} cm &nbsp;&nbsp; | &nbsp;&nbsp; {{ person?.mass }} Kg &nbsp;&nbsp; | &nbsp;&nbsp; {{ person?.gender }}</p>
+  <hr class="my-4">
+  <p class="text-capitalize">Hair color: {{ person?.hair_color }}</p>
+  <p class="text-capitalize">Eye color: {{ person?.eye_color }}</p>
+</div>

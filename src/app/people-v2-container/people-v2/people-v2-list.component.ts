@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JsonserverService } from '../../services/jsonserver.service';
+import { Person } from '../../models/person';
 
 @Component({
   selector: 'app-people-v2-list',
@@ -8,7 +9,7 @@ import { JsonserverService } from '../../services/jsonserver.service';
 })
 export class PeopleV2ListComponent implements OnInit {
 
-  public people;
+  public people: Person[];
 
   constructor(
     private jsonserverService: JsonserverService
@@ -21,7 +22,14 @@ export class PeopleV2ListComponent implements OnInit {
   getPeople() {
     this.jsonserverService.getPeople().take(1).subscribe(res => {
       this.people = res;
-    })
+    });
+  }
+
+  delete(personId: number) {
+    this.jsonserverService.delete(personId).take(1).subscribe(res => {
+      console.log('deleted!');
+      this.getPeople();
+    });
   }
 
 }

@@ -27,4 +27,9 @@ export class JsonserverService {
     return this.http.put<Person>(url, person);
   }
 
+  delete(personId: number): Observable<Person> {
+    const url = `${this.url}/${personId}`;
+    return this.http.delete<Person>(url);
+  }
+
 }

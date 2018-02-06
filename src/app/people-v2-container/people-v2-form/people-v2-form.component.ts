@@ -26,7 +26,9 @@ export class PeopleV2FormComponent implements OnInit {
   ngOnInit() {
     this.getPlanets();
     this.route.params.take(1).subscribe(params => {
-      this.getPerson(params.person);
+      if (params.person !== 'new') {
+        this.getPerson(params.person);
+      }
     });
   }
 

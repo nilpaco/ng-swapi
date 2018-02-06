@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../services/swapi.service';
+import { Planet } from '../models/planet';
 
 @Component({
   selector: 'app-planets-list',
@@ -8,9 +9,10 @@ import { SwapiService } from '../services/swapi.service';
 })
 export class PlanetsListComponent implements OnInit {
 
-  public planets;
+  public planets: Planet[];
   public _next: string;
   public _back: string;
+  public loading: boolean;
 
   constructor(
     private swapiService: SwapiService
@@ -21,7 +23,10 @@ export class PlanetsListComponent implements OnInit {
   }
 
   getPlanets(url?: string) {
-    this.swapiService.getPlanets(url).subscribe(res => {
+    this.loading = true;
+    this.planets = undefined;
+    this.swapiService.getPlanets(url).subscribe((res: Planet[]) => {
+      this.loading = false;
       this.planets = res['results'].map(planet => {
         planet.url = planet.url.split('/')[5];
         return planet;

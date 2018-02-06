@@ -14,6 +14,7 @@ import { PeopleV2ContainerComponent } from './people-v2-container/people-v2-cont
 import { PeopleV2ListComponent } from './people-v2-container/people-v2/people-v2-list.component';
 import { PeopleV2FormComponent } from './people-v2-container/people-v2-form/people-v2-form.component';
 import { JsonserverService } from './services/jsonserver.service';
+import { AbstractListComponent } from './models/abstract-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { JsonserverService } from './services/jsonserver.service';
     PersonDetailComponent,
     PeopleV2ContainerComponent,
     PeopleV2ListComponent,
-    PeopleV2FormComponent
+    PeopleV2FormComponent    
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,9 @@ import { JsonserverService } from './services/jsonserver.service';
     SwapiService,
     JsonserverService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    AbstractListComponent
+  ]
 })
 export class AppModule { }

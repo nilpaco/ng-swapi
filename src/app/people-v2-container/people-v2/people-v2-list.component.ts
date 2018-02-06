@@ -20,7 +20,7 @@ export class PeopleV2ListComponent implements OnInit {
   }
 
   getPeople() {
-    this.jsonserverService.getPeople().take(1).subscribe(res => {
+    this.jsonserverService.getPeople().take(1).subscribe((res: Person[]) => {
       this.people = res;
     });
   }

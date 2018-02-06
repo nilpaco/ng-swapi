@@ -13,7 +13,7 @@ export class JsonserverService {
     private http: HttpClient
   ) { }
   
-  getPeople(personId?: number): Observable<any> {
+  getPeople(personId?: number): Observable<Person[] | Person> {
     const url = personId ? `${this.url}/${personId}` : this.url;
     return this.http.get<Person[] | Person>(url);
   }
